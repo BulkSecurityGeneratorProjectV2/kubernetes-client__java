@@ -30,6 +30,7 @@ import io.kubernetes.client.util.exception.CopyNotSupportedException;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import org.junit.Before;
 import org.junit.Rule;
@@ -91,7 +92,7 @@ public class CopyTest {
   @Test
   public void testCopyFileToPod() throws IOException, InterruptedException {
 
-    File testFile = File.createTempFile("testfile", null);
+    File testFile = Files.createTempFile("testfile", null).toFile();
     testFile.deleteOnExit();
 
     Copy copy = new Copy(client);
